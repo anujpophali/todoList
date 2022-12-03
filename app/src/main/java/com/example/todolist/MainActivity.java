@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 .getStringSet("notes",null);
 
         if(set==null){
-            notes.add("Sample Note Title|||Sample Note Description");
+            notes.add("Sample Note Title|/Sample Note Description");
         }
         else{
             notes=new ArrayList<>(set);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         for(String s:notes){
-            String[] sarr =s.split("[|||]");
+            String[] sarr =s.split("[|/]");
             titles.add(sarr[0]);
             titleAndDesc.put(sarr[0],sarr[1]);
         }
@@ -83,12 +83,16 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
+                                        String title=titles.get(itemToDelete);
+                                        titles.remove(itemToDelete);
+                                        String desc=titleAndDesc.get(title);
+                                        notes.remove(title +"|/"+desc);
+                                        titleAndDesc.remove(title);
 
-                                        notes.remove(itemToDelete);
                                         arrayAdapter.notifyDataSetChanged();
-                                        Toast.makeText(getApplicationContext(), "Your Note is successfully Deleted.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Your Task is successfully Deleted.", Toast.LENGTH_LONG).show();
 
-                                        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.rubancreation.notes", Context.MODE_PRIVATE);
+                                        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.todolist", Context.MODE_PRIVATE);
                                         HashSet<String> set = new HashSet<>(MainActivity.notes);
                                         sharedPreferences.edit().putStringSet("notes", set).apply();
 
