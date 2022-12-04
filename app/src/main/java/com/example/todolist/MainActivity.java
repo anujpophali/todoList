@@ -90,9 +90,10 @@ public class MainActivity extends AppCompatActivity {
                                         titleAndDesc.remove(title);
 
                                         arrayAdapter.notifyDataSetChanged();
-                                        Toast.makeText(getApplicationContext(), "Your Task is successfully Deleted.", Toast.LENGTH_LONG).show();
-
-                                        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.todolist", Context.MODE_PRIVATE);
+                                        Toast.makeText(getApplicationContext()
+                                                , "Your Task is successfully Deleted.", Toast.LENGTH_LONG).show();
+                                        SharedPreferences sharedPreferences = getApplicationContext()
+                                                .getSharedPreferences("com.example.todolist", Context.MODE_PRIVATE);
                                         HashSet<String> set = new HashSet<>(MainActivity.notes);
                                         sharedPreferences.edit().putStringSet("notes", set).apply();
 
