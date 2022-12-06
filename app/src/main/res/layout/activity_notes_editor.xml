@@ -11,7 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title"
-        android:inputType="text" />
+        android:inputType="text"
+        android:background="@null"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        />
 
     <EditText
         android:layout_width="match_parent"
@@ -19,7 +25,11 @@
         android:hint="Description"
         android:inputType="textMultiLine"
         android:layout_below="@id/title"
-        android:id="@+id/description"/>
+        android:id="@+id/description"
+        android:background="@null"
+        android:paddingVertical="10dp"
+        android:paddingHorizontal="10dp"
+        android:textColor="@color/grey"/>
 
 
 
