@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                                         String title=titles.get(itemToDelete);
                                         titles.remove(itemToDelete);
                                         String desc=titleAndDesc.get(title);
-                                        notes.remove(title +"|/"+desc);
+                                        notes.remove(title +"|"+desc);
                                         titleAndDesc.remove(title);
 
                                         arrayAdapter.notifyDataSetChanged();
@@ -123,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId()==R.id.plus){
             Intent intent=new Intent(getApplicationContext(),NotesEditor.class);
             startActivity(intent);
+            SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("com.example.todolist", Context.MODE_PRIVATE);
+            HashSet<String> set = new HashSet<>(MainActivity.notes);
+            sharedPreferences.edit().putStringSet("notes", set).apply();
+
             return true;
         }
         else if(item.getItemId()==0){

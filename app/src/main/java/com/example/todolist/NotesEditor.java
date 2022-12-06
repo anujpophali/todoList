@@ -3,7 +3,9 @@ package com.example.todolist;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,9 +64,10 @@ public class NotesEditor extends AppCompatActivity {
             case android.R.id.home:
                 newTitle=edtTitle.getText().toString();
                 newDesc=edtDesc.getText().toString();
-                String save=newTitle+"|/"+newDesc;
+                String save=newTitle+"|"+newDesc;
                 if(position==-1){
                     MainActivity.notes.add(save);
+                    MainActivity.titles.add(newTitle);
                     MainActivity.titles.add(newTitle);
                     MainActivity.titleAndDesc.put(newTitle,newDesc);
                     this.finish();
