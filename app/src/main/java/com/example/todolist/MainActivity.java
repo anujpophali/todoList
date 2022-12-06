@@ -44,15 +44,16 @@ public class MainActivity extends AppCompatActivity {
                 .getStringSet("notes",null);
 
         if(set==null){
-            notes.add("Sample Note Title|/Sample Note Description");
+            notes.add("Sample Note Title|Sample Note Description");
         }
         else{
+            notes.add("Sample Note Title|Sample Note Description");
             notes=new ArrayList<>(set);
         }
 
 
         for(String s:notes){
-            String[] sarr =s.split("[|/]");
+            String[] sarr =s.split("[|]");
             titles.add(sarr[0]);
             titleAndDesc.put(sarr[0],sarr[1]);
         }
