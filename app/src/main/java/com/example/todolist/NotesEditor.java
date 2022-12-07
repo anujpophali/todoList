@@ -12,6 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 
+import java.util.HashSet;
+
 
 public class NotesEditor extends AppCompatActivity {
     int position;
@@ -68,14 +70,21 @@ public class NotesEditor extends AppCompatActivity {
                 if(position==-1){
                     MainActivity.notes.add(save);
                     MainActivity.titles.add(newTitle);
-                    MainActivity.titles.add(newTitle);
                     MainActivity.titleAndDesc.put(newTitle,newDesc);
+                    SharedPreferences sharedPreferences = getApplicationContext()
+                            .getSharedPreferences("com.example.todolist", Context.MODE_PRIVATE);
+                    HashSet<String> set = new HashSet<>(MainActivity.notes);
+                    sharedPreferences.edit().putStringSet("notes", set).apply();
                     this.finish();
                 }else{
                     MainActivity.notes.set(position,save);
                     MainActivity.titles.set(position,newTitle);
                     MainActivity.titleAndDesc.remove(title);
                     MainActivity.titleAndDesc.put(newTitle,newDesc);
+                    SharedPreferences sharedPreferences = getApplicationContext()
+                            .getSharedPreferences("com.example.todolist", Context.MODE_PRIVATE);
+                    HashSet<String> set = new HashSet<>(MainActivity.notes);
+                    sharedPreferences.edit().putStringSet("notes", set).apply();
                     this.finish();
                 }
                 return true;
