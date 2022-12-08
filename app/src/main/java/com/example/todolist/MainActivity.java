@@ -132,8 +132,8 @@ public class MainActivity extends AppCompatActivity {
         else if(item.getItemId()==0){
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Text");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "I'm Using TaskMaster App");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "You Can Download it too!");
             startActivity(Intent.createChooser(sharingIntent, "Share Via"));
         }
         else if(item.getItemId()==1){

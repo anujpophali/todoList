@@ -29,7 +29,29 @@
         android:background="@null"
         android:paddingVertical="10dp"
         android:paddingHorizontal="10dp"
-        android:textColor="@color/grey"/>
+        android:textColor="@color/grey"
+        android:layout_marginBottom="30sp"
+
+        />
+
+    <TimePicker
+        android:id="@+id/timep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"
+        android:layout_below="@id/description"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Notification"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/timebtn"
+        android:layout_below="@+id/timep"/>
+
+
+
 
 
 
